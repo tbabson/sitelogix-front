@@ -8,7 +8,7 @@ export const logsApi = {
   get: (id: string) =>
     client.get<ApiResponse<DailyLog>>(`/logs/${id}`),
 
-  create: (data: Partial<DailyLog>) =>
+  create: (data: Partial<DailyLog> & { materials?: { material_id: string; quantity_used: number }[] }) =>
     client.post<ApiResponse<DailyLog>>('/logs', data),
 
   update: (id: string, data: Partial<DailyLog>) =>
